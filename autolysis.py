@@ -115,7 +115,7 @@ def generate_readme(summary_stats, missing_values, llm_response, df):
 
 def main():
     # Define the dataset file directly here
-    filename = r"C:\Users\Abhishek R K\Downloads\goodreads.csv"
+    filename = THE FILE PATH
     if not os.path.isfile(filename):
         print(f"Error: File {filename} not found.")
         return
