@@ -23,6 +23,7 @@ Our analysis explores trends, correlations, and actionable insights to help cont
 
 ![repeatability_distribution](https://github.com/user-attachments/assets/6ff9139b-9c08-4256-9d17-f049f0973809)
 
+Distribution of Repeatability
 Distinct Clusters: The distribution shows three peaks at values of approximately 1.0, 2.0, and 3.0, indicating that repeatability is categorized into distinct levels.
 Most Content Has Low Repeatability: A significant portion of media falls in the first peak (1.0), suggesting that most content is not frequently revisited.
 Implications: Content with higher repeatability values (2.0 or 3.0) could represent formats or topics that resonate strongly with the audience, warranting deeper exploration.
@@ -30,14 +31,14 @@ Implications: Content with higher repeatability values (2.0 or 3.0) could repres
 
 
 ![correlation_heatmap](https://github.com/user-attachments/assets/cad9b70a-77f0-4c1c-99ac-dc6dbcb114dc)
-
+Correlation Heatmap
 Strong Correlation Between Overall and Quality: A high positive correlation (0.83) indicates that higher-quality content tends to perform better overall.
 Negative Correlation Between Repeatability and Cluster: Repeatability shows a negative relationship with the cluster variable (-0.77), suggesting a pattern where specific clusters have lower repeat engagement.
 Implications: Quality enhancement and understanding cluster-specific behaviors can significantly improve content performance and engagement.
 
 
 ![Cluster_distribution](https://github.com/user-attachments/assets/d8caae7d-d6ae-42d8-970d-75f5ee1c4f58)
-
+Distribution of Cluster
 Three Major Clusters: The dataset is divided into three primary clusters (0, 1, and 2), with cluster 2 having the highest count, indicating that it contains the majority of the media content.
 Balanced Representation: Each cluster is distinctly separated, suggesting well-defined groupings of media content based on certain characteristics.
 Implications: Understanding the traits of each cluster can help in designing targeted strategies for improving content performance and audience reach.
