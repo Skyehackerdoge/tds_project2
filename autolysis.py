@@ -9,6 +9,18 @@ import json
 from sklearn.cluster import KMeans
 from sklearn.ensemble import RandomForestRegressor
 from scipy.stats import zscore
+import subprocess
+
+# Install missing dependencies dynamically
+required_libraries = [
+    "pandas", "matplotlib", "seaborn", "numpy", "requests", "scikit-learn", "scipy"
+]
+for lib in required_libraries:
+    try:
+        __import__(lib)
+    except ImportError:
+        print(f"Installing missing library: {lib}")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", lib])
 
 # AI Proxy details
 API_URL = "https://aiproxy.sanand.workers.dev/openai/v1/chat/completions"
