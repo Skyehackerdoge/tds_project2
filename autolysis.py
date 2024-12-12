@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -11,7 +12,7 @@ from scipy.stats import zscore
 
 # AI Proxy details
 API_URL = "https://aiproxy.sanand.workers.dev/openai/v1/chat/completions"
-API_TOKEN = os.getenv("API_TOKEN")
+API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIxZjMwMDIwOTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.L6vVLu2KA5m0RglcGDmTNyj_0k1PEeTRoBcQynJykCc"
 
 def query_llm(prompt):
     """Query the LLM using AI Proxy."""
@@ -28,7 +29,7 @@ def query_llm(prompt):
     }
     try:
         response = requests.post(API_URL, headers=headers, json=payload)
-        response.raise_for_status()  # Raise an error for HTTP issues
+        response.raise_for_status()
         return response.json()["choices"][0]["message"]["content"]
     except requests.exceptions.RequestException as e:
         print(f"Error querying the LLM: {e}")
@@ -88,13 +89,6 @@ def create_visualizations(df):
         plt.savefig(f"{col}_distribution.png")
         plt.close()
 
-    missing_values = df.isnull().sum()
-    plt.figure(figsize=(10, 6))
-    missing_values.plot(kind='bar')
-    plt.title("Missing Values Per Column")
-    plt.savefig("missing_values.png")
-    plt.close()
-
 def generate_readme(summary_stats, missing_values, llm_response, df):
     """Generate a README.md file with the analysis results."""
     llm_response = llm_response or "No insights could be retrieved from the LLM due to an error."
@@ -109,13 +103,15 @@ def generate_readme(summary_stats, missing_values, llm_response, df):
         f.write(llm_response + "\n\n")
         f.write("## Visualizations\n")
         f.write("![Correlation Heatmap](correlation_heatmap.png)\n")
-        f.write("![Missing Values](missing_values.png)\n")
         for col in df.select_dtypes(include=['float64', 'int64']).columns:
             f.write(f"![Distribution of {col}]({col}_distribution.png)\n")
 
 def main():
-    # Define the dataset file directly here
-    filename = THE FILE PATH
+    if len(sys.argv) < 2:
+        print("Usage: python autolysis.py <dataset.csv>")
+        return
+
+    filename = sys.argv[1]
     if not os.path.isfile(filename):
         print(f"Error: File {filename} not found.")
         return
