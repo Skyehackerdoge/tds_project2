@@ -12,7 +12,7 @@ from scipy.stats import zscore
 
 # AI Proxy details
 API_URL = "https://aiproxy.sanand.workers.dev/openai/v1/chat/completions"
-API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIxZjMwMDIwOTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.L6vVLu2KA5m0RglcGDmTNyj_0k1PEeTRoBcQynJykCc"
+API_TOKEN = os.getenv("API_TOKEN")
 
 def query_llm(prompt):
     """Query the LLM using AI Proxy."""
